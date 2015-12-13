@@ -121,6 +121,10 @@ on early-boot
     write /sys/bus/msm_subsys/devices/subsys3/recovery_policy "skip_restart"
 
 on boot
+
+     chmod 444 /dev/erandom
+     chmod 444 /dev/frandom
+
     insmod /system/lib/modules/adsprpc.ko
     insmod /system/lib/modules/mhi.ko
     chown bluetooth net_bt_stack /sys/module/bluetooth_power/parameters/power
@@ -240,6 +244,11 @@ on boot
     chown media media /sys/devices/c55_ctrl/gpio_c55_int/value
     chown media media /sys/devices/c55_ctrl/gpio_core/value
     chown media media /sys/devices/c55_ctrl/gpio_reset/value
+
+    # LED permissions
+    chmod 664 /sys/class/leds/red/brightness
+    chmod 664 /sys/class/leds/green/brightness
+    chmod 664 /sys/class/leds/blue/brightness
 
 # subsystem ramdump collection
 on property:persist.sys.qc.sub.rdump.on=*
