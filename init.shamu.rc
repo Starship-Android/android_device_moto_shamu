@@ -159,6 +159,10 @@ on boot
 
     setprop wifi.interface wlan0
 
+# Frandom Permissions
+    chmod 444 /dev/erandom
+    chmod 444 /dev/frandom
+
     #readable symlinks for video nodes
     mkdir /dev/video
     symlink /dev/video32 /dev/video/venus_dec
